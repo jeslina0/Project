@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+        }
+
+        .logo {
+            background-color: whitesmoke;
+            color: blue;
+            display: flex; 
+            align-items: center; 
+            height: 100px;
+            justify-content: space-between;
+            padding: 0 30px; 
+            margin-bottom: 190px;
+        }
+
+        .h1-container {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo h1 {
+            color: white;
+            margin: 0; 
+        }
+
+        .links {
+            display: flex;
+            gap: 20px; 
+        }
+
+        .links a {
+            text-decoration: underline; 
+            color: black;
+            font-size: 18px;
+        }
+
+        .content {
+            flex: 10000;
+            background-color:white;
+            color: white; 
+            text-align: center; 
+        }
+
+        .top-links {
+            background-color:white;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .top-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #002147; 
+            color: white; 
+            padding: 50px 20px; 
+            text-align: center;
+        }
+
+        .footer a {
+            color: white; 
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .footer ion-icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .message-box {
+            width: 80%;
+            max-width: 600px;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color:lightsteelblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+
+       
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .social-icons a {
+            font-size: 30px;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: lightgray;
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 16px;
+            color: lightgray;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+        <div class="h1-container"> 
+            <h1>ThapaTechnical</h1>
+        </div>
+        <div class="links">
+            <a href="https://biits.greythr.com/v3/portal/ess/attendance/attendance-info">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="message-container">
+        <textarea class="message-box" placeholder="Message"></textarea>
+        <button class="send-button">Send Message</button>
+    </div>
+
+    <footer class="footer">
+        <div class="container grid grid-four-column">
+            <div class="f-about">
+                <h3>About</h3>
+                <p>We have tested a number of registry file and clean utilities and present our top 3 lists on our site for your convenience. Hope you like it!</p>
+            </div>
+
+            <div class="f-links">
+                <h3>Links</h3>
+                <ul>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Home</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">About</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Services</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Portfolio</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-services">
+                <h3>Services</h3>
+                <ul>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Web Design</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Web Development</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Mern Project</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">Online Classes</a></li>
+                    <li><ion-icon name="arrow-forward-outline"></ion-icon><a href="#">YouTube Course</a></li>
+                </ul>
+            </div>
+
+            <div class="have-a-question">
+                <h3>Have a question?</h3>
+                <ul>
+                    <li><ion-icon name="location-outline"></ion-icon><a href="#">Pune, India</a></li>
+                    <li><ion-icon name="call-outline"></ion-icon><a href="#">99yAG8773E</a></li>
+                    <li><ion-icon name="mail-outline"></ion-icon><a href="#">JES@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+        </div>
+       
+        <p class="copyright">Copyright &copy; 2022 All rights reserved | This template is made by Thapa Technical</p>
+
+    </footer>
+
+</body>
+</html>
