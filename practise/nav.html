@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav bar</title>
+    <style>
+        *{margin: 0; padding: 0; }
+        nav {height: 100px;
+        background-color: lightblue;
+         display:flex;
+         justify-content: space-around;
+         align-items: center;
+}
+
+
+.logo {
+    width:40%;
+    color:aqua;
+ 
+    padding-left: 55px;
+
+
+}
+.logo h1 {
+    text-transform: capitalize;
+    text-shadow: 2px 2px 2px #dfe6e9;
+}
+
+
+.menu{
+    width:60%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menu a{
+    text-decoration: none;
+    color:#2d3436;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+
+}
+.menu a:before {
+    content:"";
+    position: absolute;
+    left:0;
+    top:100%;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: all 0.5s linear;
+
+}
+.menu a:hover:before{
+    width:100%;
+    background-color: #6c5ce7;
+
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+<h1>ThapaTechnical</h1>
+        </div>
+        <div class="menu">
+            <a href="https://www.youtube.com/watch?v=XLqO5EOgmfw" target="_blank">home</a>
+            <a href="#">Services</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+
+        </div>
+    </nav>
+    
+</body>
+</html>
