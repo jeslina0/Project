@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Capture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        button.reset {
+            background-color: #f44336;
+        }
+
+        button.save {
+            background-color: #2196F3;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 8px;
+            margin: 5px;
+            width: 100%;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        td input,
+        td select {
+            width: 90%;
+            margin: 0;
+            padding: 5px;
+        }
+
+        .editing {
+            background-color: #f8f8f8;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 0px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #f1f1f1;
+            color: black;
+            text-align: center;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .tab-button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        #dataTableContainer {
+            overflow-x: auto;
+            width: 95%;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tabs">
+        <button type="button" class="tab-button active" id="formTabBtn">Forms</button>
+        <button type="button" class="tab-button" id="tableTabBtn">Table</button>
+    </div>
+
+    <div id="formContainer" class="tab-content active">
+        <div class="form-container">
+            <h1>Forms</h1>
+            <form id="userForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName"><br>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName"><br>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address"><br>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone"><br>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob"><br>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city"><br>
+
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state"><br>
+
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="zip" name="zip"><br>
+
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country"><br>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword"><br>
+
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company"><br>
+
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle"><br>
+
+                <label for="website">Website:</label>
+                <input type="text" id="website" name="website"><br>
+
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio"></textarea><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+
+                <label for="interests">Interests:</label>
+                <input type="text" id="interests" name="interests"><br>
+
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" name="skills"><br>
+
+                <label for="education">Education:</label>
+                <input type="text" id="education" name="education"><br>
+
+                <label for="experience">Experience (in years):</label>
+                <input type="number" id="experience" name="experience" min="0"><br>
+
+                <button type="button" id="submitBtn">Submit</button>
+                <button type="button" class="reset" id="resetBtn">Reset</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dataTableContainer" class="tab-content">
+        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Stored Form Data:</h2>
+        <div class="table-wrapper">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll" /> Select All</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Date of Birth</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip Code</th>
+                        <th>Country</th>
+                        <th>Username</th>
+                        <th>Company</th>
+                        <th>Job Title</th>
+                        <th>Website</th>
+                        <th>Bio</th>
+                        <th>Gender</th>
+                        <th>Interests</th>
+                        <th>Skills</th>
+                        <th>Education</th>
+                        <th>Experience</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <button type="button" id="deleteSelectedBtn">Delete Selected</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("formTabBtn").addEventListener("click", function () {
+            document.getElementById("formContainer").classList.add("active");
+            document.getElementById("dataTableContainer").classList.remove("active");
+            document.getElementById("formTabBtn").classList.add("active");
+            document.getElementById("tableTabBtn").classList.remove("active");
+        });
+
+        document.getElementById("tableTabBtn").addEventListener("click", function () {
+            document.getElementById("formContainer").classList.remove("active");
+            document.getElementById("dataTableContainer").classList.add("active");
+            document.getElementById("tableTabBtn").classList.add("active");
+            document.getElementById("formTabBtn").classList.remove("active");
+
+            const tbody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            displayData();
+        });
+
+        const submitBtn = document.getElementById("submitBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const form = document.getElementById("userForm");
+
+        resetBtn.addEventListener("click", () => {
+            form.reset();
+         
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        });
+
+        document.getElementById("selectAll").addEventListener("click", function () {
+            const isChecked = this.checked;
+            document.querySelectorAll('.rowCheckbox').forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
+        });
+
+        document.getElementById("deleteSelectedBtn").addEventListener("click", function () {
+            if (confirm('Are you sure you want to delete selected records?')) {
+                const checkboxes = document.querySelectorAll('.rowCheckbox:checked');
+                if (checkboxes.length === 0) {
+                    alert('Please select at least one record to delete');
+                    return;
+                }
+
+                const storedData = JSON.parse(localStorage.getItem("formData")) || [];
+                const newData = [];
+
+                for (let i = 0; i < storedData.length; i++) {
+                    let shouldDelete = false;
+                    checkboxes.forEach(checkbox => {
+                        const rowIndex = Array.from(document.querySelectorAll('.rowCheckbox')).indexOf(checkbox);
+                        if (rowIndex === i) {
+                            shouldDelete = true;
+                        }
+                    });
+                    if (!shouldDelete) {
+                        newData.push(storedData[i]);
+                    }
+                }
+
+                localStorage.setItem("formData", JSON.stringify(newData));
+
+                const tbody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+                displayData();
+            }
+        });
+
+        function handleRowDelete(row) {
+            const index = Array.from(row.parentNode.children).indexOf(row);
+            const storedData = JSON.parse(localStorage.getItem("formData")) || [];
+
+            if (storedData && index >= 0) {
+                storedData.splice(index, 1);
+                localStorage.setItem("formData", JSON.stringify(storedData));
+                row.remove();
+            }
+        }
+
+        function handleRowEdit(row, editBtn) {
+            const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+            const storedData = JSON.parse(localStorage.getItem("formData")) || [];
+
+            if (row.classList.contains('editing')) {
+                // Save mode
+                const updatedData = {};
+                const inputs = row.querySelectorAll('input, select, textarea');
+
+                inputs.forEach(input => {
+                    if (input.type !== 'checkbox') {
+                        const field = input.getAttribute('data-field');
+                        updatedData[field] = input.value;
+                    }
+                });
+
+                storedData[rowIndex] = updatedData;
+                localStorage.setItem("formData", JSON.stringify(storedData));
+
+            
+                const tbody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+                displayData();
+
+                editBtn.textContent = 'Edit';
+                row.classList.remove('editing');
+            } else {
+               
+                row.classList.add('editing');
+                editBtn.textContent = 'Save';
+
+                const data = storedData[rowIndex];
+                const cells = row.cells;
+
+                for (let i = 1; i < cells.length - 2; i++) {
+                    const fieldName = document.getElementById("dataTable").tHead.rows[0].cells[i].textContent.trim();
+                    const value = cells[i].textContent;
+                    const field = fieldName.toLowerCase().replace(/\s+/g, '');
+
+                    let inputElement;
+                    if (fieldName === 'Gender') {
+                        inputElement = document.createElement('select');
+                        ['male', 'female', 'other'].forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option.charAt(0).toUpperCase() + option.slice(1);
+                            optionElement.selected = option === data[field];
+                            inputElement.appendChild(optionElement);
+                        });
+                    } else if (fieldName === 'Bio') {
+                        inputElement = document.createElement('textarea');
+                        inputElement.value = value;
+                    } else if (fieldName === 'Date of Birth') {
+                        inputElement = document.createElement('input');
+                        inputElement.type = 'date';
+                        inputElement.value = value;
+                    } else if (fieldName === 'Experience') {
+                        inputElement = document.createElement('input');
+                        inputElement.type = 'number';
+                        inputElement.min = 0;
+                        inputElement.value = value;
+                    } else {
+                        inputElement = document.createElement('input');
+                        inputElement.type = 'text';
+                        inputElement.value = value;
+                    }
+
+                    inputElement.setAttribute('data-field', getFieldNameFromHeader(fieldName));
+                    cells[i].innerHTML = '';
+                    cells[i].appendChild(inputElement);
+                }
+            }
+        }
+
+        function getFieldNameFromHeader(headerText) {
+            const fieldMap = {
+                'Email': 'email',
+                'First Name': 'firstName',
+                'Last Name': 'lastName',
+                'Phone': 'phone',
+                'Date of Birth': 'dob',
+                'City': 'city',
+                'State': 'state',
+                'Zip Code': 'zip',
+                'Country': 'country',
+                'Username': 'username',
+                'Company': 'company',
+                'Job Title': 'jobTitle',
+                'Website': 'website',
+                'Bio': 'bio',
+                'Gender': 'gender',
+                'Interests': 'interests',
+                'Skills': 'skills',
+                'Education': 'education',
+                'Experience': 'experience'
+            };
+
+            return fieldMap[headerText] || headerText.toLowerCase().replace(/\s+/g, '');
+        }
+
+        function initializeRowButtons(row) {
+            const deleteBtn = row.querySelector('.deleteBtn');
+            const editBtn = row.querySelector('.editBtn');
+
+            deleteBtn.addEventListener('click', function () {
+                if (confirm('Are you sure you want to delete this record?')) {
+                    handleRowDelete(row);
+                }
+            });
+
+            editBtn.addEventListener('click', function () {
+                handleRowEdit(row, editBtn);
+            });
+        }
+
+        function displayData() {
+            const storedData = JSON.parse(localStorage.getItem("formData")) || [];
+            const tbody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; 
+
+            if (storedData && storedData.length > 0) {
+                storedData.forEach((data, index) => {
+                    const newRow = tbody.insertRow();
+
+                    newRow.innerHTML = `
+                <td><input type="checkbox" class="rowCheckbox" /></td>
+                <td>${data.email || ''}</td>
+                <td>${data.firstName || ''}</td>
+                <td>${data.lastName || ''}</td>
+                <td>${data.phone || ''}</td>
+                <td>${data.dob || ''}</td>
+                <td>${data.city || ''}</td>
+                <td>${data.state || ''}</td>
+                <td>${data.zip || ''}</td>
+                <td>${data.country || ''}</td>
+                <td>${data.username || ''}</td>
+                <td>${data.company || ''}</td>
+                <td>${data.jobTitle || ''}</td>
+                <td>${data.website || ''}</td>
+                <td>${data.bio || ''}</td>
+                <td>${data.gender || ''}</td>
+                <td>${data.interests || ''}</td>
+                <td>${data.skills || ''}</td>
+                <td>${data.education || ''}</td>
+                <td>${data.experience || ''}</td>
+                <td><button class="deleteBtn">Delete</button></td>
+                <td><button class="editBtn">Edit</button></td>
+            `;
+                    initializeRowButtons(newRow);
+                });
+            }
+        }
+
+        submitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+            let hasError = false;
+
+            if (passwordInput.value && confirmPasswordInput.value &&
+                passwordInput.value !== confirmPasswordInput.value) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.textContent = 'Passwords do not match';
+                confirmPasswordInput.parentNode.insertBefore(errorMsg, confirmPasswordInput.nextSibling);
+                confirmPasswordInput.classList.add('error');
+                passwordInput.classList.add('error');
+                hasError = true;
+            }
+
+            if (!hasError) {
+                handleFormSubmission();
+            }
+        });
+
+        function handleFormSubmission() {
+         
+            const data = {};
+            const formElements = form.elements;
+            let isValid = true;  
+            let errorMessages = [];
+        
+
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                
+           
+                if (element.name && element.name !== 'confirmPassword' && element.tagName !== 'BUTTON') {
+                    const fieldValue = element.value.trim();
+
+                    if (element.name === 'email' && !validateEmail(fieldValue)) {
+                        isValid = false;
+                        errorMessages.push('Please enter a valid email address.');
+                        element.classList.add('error');
+                    }
+                    else if (element.hasAttribute('required') && fieldValue === '') {
+                        isValid = false;
+                        errorMessages.push(`${element.previousElementSibling.textContent} is required.`);
+                        element.classList.add('error');
+                    }
+
+                    else if (element.name === 'phone' && !validatePhoneNumber(fieldValue)) {
+                        isValid = false;
+                        errorMessages.push('Please enter a valid phone number.');
+                        element.classList.add('error');
+                    }
+                    else if (element.name === 'confirmPassword' && element.value !== document.getElementById('password').value) {
+                        isValid = false;
+                        errorMessages.push('Passwords do not match.');
+                        element.classList.add('error');
+                    }
+                    else {
+                        element.classList.remove('error');
+                    }
+        
+                    data[element.name] = fieldValue;
+                }
+            }
+        
+            if (!isValid) {
+                alert(errorMessages.join('\n'));
+                return; 
+            }
+        
+            let storedData = JSON.parse(localStorage.getItem("formData"));
+            if (!Array.isArray(storedData)) {
+                storedData = [];  
+            }
+        
+            storedData.push(data);
+        
+            localStorage.setItem("formData", JSON.stringify(storedData));
+        
+            alert('Form data saved successfully.');
+            form.reset(); 
+        
+          
+            document.getElementById("tableTabBtn").click();
+        }
+        
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+        
+        function validatePhoneNumber(phone) {
+            const re = /^[0-9]{10}$/;  
+            return re.test(phone);
+        }
+        displayData();
+    </script>
+</body>
+
+</html>
