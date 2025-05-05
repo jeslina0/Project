@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: brown;
+}
+
+
+.leftcontent{
+    flex: 2;
+    background-color: aqua;
+}
+
+.Rightcontent{
+    flex: 1;
+    background-color: black;
+    color: aliceblue;
+}
+
+.image-container{
+    background-color: cadetblue;
+  
+}
+.upperImageRow{
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomImageRow{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}

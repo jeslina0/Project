@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Tab Clone (Responsive)</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 300px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    #updateBtn {
+      background-color: #d6e4f0;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      background-color: #1a73e8;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .main {
+      text-align: center;
+      margin-top: 80px;
+      padding: 0 20px;
+    }
+
+    .google-logo {
+      width: 200px;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .search-box input {
+      width: 100%;
+      max-width: 600px;
+      padding: 14px 20px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .shortcuts {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .shortcut {
+      width: 70px;
+      height: 70px;
+      background-color: #f1f3f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s;
+      padding: 5px;
+    }
+
+    .shortcut:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile {
+        margin-top: 10px;
+      }
+
+      .search-box input {
+        max-width: 90%;
+      }
+
+      .shortcut {
+        width: 60px;
+        height: 60px;
+        font-size: 10px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="search-bar">
+      <input type="text" placeholder="Search Google or type a URL">
+    </div>
+    <div class="profile">
+      <button id="updateBtn">Relaunch to update</button>
+      <div class="profile-icon">J</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png" alt="Google Logo" class="google-logo">
+    
+    <div class="search-box">
+      <input type="text" placeholder="Search Google or type a URL">
+    </div>
+
+    <div class="shortcuts">
+      <div class="shortcut">BEL</div>
+      <div class="shortcut">Login</div>
+      <div class="shortcut">ChatGPT</div>
+      <div class="shortcut">SQL Tutorial</div>
+      <div class="shortcut">Two Sum</div>
+      <div class="shortcut">Web Store</div>
+      <div class="shortcut">Add Shortcut</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("updateBtn").addEventListener("click", function() {
+      alert("Browser is updating...");
+    });
+  </script>
+
+</body>
+</html>

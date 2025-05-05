@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Design Mastery | Digital</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      nav {
+        width: 100%;
+        padding: 1rem 2rem;
+        padding-left: 10rem;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        gap: 75rem;
+      }
+
+      .nav__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav__logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .nav__logo span {
+        margin-right: 8px;
+        transform: translateY(-4px);
+      }
+
+      .nav__logo img {
+        width: 50px;
+        height: auto;
+      }
+
+      .nav__links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav__links li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .nav__links li a:hover {
+        color: #ff0147;
+      }
+
+      .header__container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 4rem 1rem;
+        display: grid;
+        gap: 2rem;
+      }
+
+      .header__image img {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+        margin: auto;
+      }
+
+      .header__content {
+        text-align: center;
+      }
+
+      .section__title {
+  color: #ff0147;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  position: relative;
+  display: inline-block;
+  padding-left: 2rem; 
+}
+
+.section__title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  width: 10px;
+  height: 30px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+
+      .header__content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .h1__span-1 {
+        color: #ff0147;
+        font-size: 3rem;
+      }
+
+      .h1__span-2 {
+        font-size: 2rem;
+        font-weight: 400;
+      }
+
+      .header__content p {
+        margin: 1.5rem 0;
+        color: #d1d5db;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        background-color: #ff0147;
+        color: white;
+        border-radius: 25px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: white;
+        color: #ff0147;
+      }
+
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem 0;
+      }
+
+      .socials a {
+        font-size: 1.5rem;
+        color: #d1d5db;
+      }
+
+      .socials a:hover {
+        color: #ff0147;
+      }
+
+      .header__bar {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #d1d5db;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav__logo">
+        <a href="#">
+          <span>Digital</span>
+          <img src="../webdesign/1 assets/logo.png" alt="Logo" />
+        </a>
+      </div>
+      <ul class="nav__links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Designer</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">News</a></li>
+      </ul>
+    </nav>
+
+    <header class="header__container">
+      <div class="header__image">
+        <img src="../webdesign/1 assets/header.png" alt="Header Image" />
+      </div>
+      <div class="header__content">
+        <!-- ✅ Added class for line effect -->
+        <h2 class="section__title">UI UX DESIGN AGENCY</h2>
+        <h1>
+          Make Digital<br /><span class="h1__span-1">Product</span>
+          <span class="h1__span-2">with our Agency</span>
+        </h1>
+        <p>
+          From concept to launch, our expert team is dedicated to delivering
+          exceptional solutions tailored to your needs. Let's bring your vision
+          to life and create something extraordinary together.
+        </p>
+        <div class="header__btn">
+          <button class="btn">Learn More</button>
+        </div>
+
+        <ul class="socials">
+          <li><a href="#"><i class="ri-facebook-circle-fill"></i></a></li>
+          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+          <li><a href="#"><i class="ri-youtube-fill"></i></a></li>
+        </ul>
+
+        <div class="header__bar">
+          Copyright © 2024 Web Design Mastery. All rights reserved.
+        </div>
+      </div>
+    </header>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
